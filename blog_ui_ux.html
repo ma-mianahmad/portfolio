@@ -1,0 +1,339 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>UI, UX &amp; Usability | Mian Ahmad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .inset-bevel {
+            box-shadow: inset 2px 2px 0px 0px rgba(128, 128, 128, 1), inset -1px -1px 0px 0px rgba(255, 255, 255, 1);
+        }
+        .raised-bevel {
+            box-shadow: 1px 1px 0px 0px rgba(255, 255, 255, 1) inset, -1px -1px 0px 0px rgba(128, 128, 128, 1) inset, 1px 1px 0px 0px rgba(0, 0, 0, 1);
+        }
+        .active-inset:active {
+            box-shadow: inset 2px 2px 0px 0px rgba(0, 0, 0, 1), inset -1px -1px 0px 0px rgba(128, 128, 128, 1);
+            transform: translate(1px, 1px);
+        }
+        .dither-bg {
+            background-image: radial-gradient(#464653 0.5px, transparent 0.5px);
+            background-size: 4px 4px;
+        }
+        .win95-raised {
+            box-shadow: inset 1px 1px #fff, inset -1px -1px #808080, 1px 1px #000;
+        }
+        .win95-inset {
+            box-shadow: inset 1px 1px #808080, inset -1px -1px #fff;
+            background-color: #f4f3f3;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#00006e",
+                        "inverse-surface": "#2f3131",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffdbce",
+                        "surface-tint": "#4b53bc",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#464653",
+                        "secondary-container": "#00f93f",
+                        "on-tertiary-fixed-variant": "#7f2b00",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#faf9f9",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#3239a3",
+                        "tertiary": "#1b0400",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#e0e0ff",
+                        "primary-fixed-dim": "#bfc2ff",
+                        "on-tertiary-container": "#ed5700",
+                        "secondary-fixed-dim": "#00e639",
+                        "background": "#faf9f9",
+                        "outline": "#767684",
+                        "surface-container-low": "#f4f3f3",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#eeeeee",
+                        "on-secondary-container": "#006d16",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e3e2e2",
+                        "tertiary-fixed-dim": "#ffb599",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#411200",
+                        "on-surface": "#1a1c1c",
+                        "surface-dim": "#dadada",
+                        "surface": "#faf9f9",
+                        "surface-container-highest": "#e3e2e2",
+                        "secondary": "#006e16",
+                        "on-secondary-fixed": "#002203",
+                        "on-tertiary-fixed": "#370e00",
+                        "primary": "#00003c",
+                        "on-primary-container": "#777eea",
+                        "on-background": "#1a1c1c",
+                        "secondary-fixed": "#72ff70",
+                        "primary-container": "#000080",
+                        "inverse-primary": "#bfc2ff",
+                        "surface-container-high": "#e8e8e8",
+                        "inverse-on-surface": "#f1f0f0",
+                        "outline-variant": "#c6c5d5",
+                        "on-secondary-fixed-variant": "#00530e"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "base": "8px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "body-lg": ["JetBrains Mono"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-sm": ["Space Grotesk"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-dim font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary min-h-screen pt-20 pb-16">
+<header class="fixed top-0 w-full z-50 h-10 bg-surface border-b-2 border-on-surface flex items-center px-4 justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<a href="index.html" class="flex items-center gap-1 font-bold hover:opacity-80 transition-opacity"><span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">terminal</span><span class="font-headline-sm text-[16px] tracking-tight">Mian Ahmad</span></a>
+<nav class="hidden md:flex gap-4">
+
+
+
+
+</nav>
+</div>
+<div class="flex items-center gap-2">
+<div class="win95-inset px-2 py-0.5 font-label-sm text-[11px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span class="" id="system-clock">12:28 PM</span>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-base">
+<div class="bg-surface border-2 border-on-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
+<!-- Window Header -->
+<div class="bg-primary-container h-10 flex items-center justify-between px-4 border-b-2 border-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-white text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">description</span>
+<span class="text-on-primary font-label-md text-label-md tracking-wider uppercase">UI_UX_Usability.doc</span>
+</div>
+<div class="flex gap-1">
+<button class="w-6 h-6 bg-surface border-2 border-on-surface raised-bevel active-inset flex items-center justify-center">
+<span class="w-2 h-0.5 bg-black"></span>
+</button>
+<button class="w-6 h-6 bg-surface border-2 border-on-surface raised-bevel active-inset flex items-center justify-center">
+<span class="w-3 h-3 border-2 border-black"></span>
+</button>
+<button class="w-6 h-6 bg-surface border-2 border-on-surface raised-bevel active-inset flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] font-bold">close</span>
+</button>
+</div>
+</div>
+<!-- Metadata Ribbon -->
+<div class="bg-surface-container border-b-2 border-on-surface flex flex-wrap gap-y-2 py-2 px-4 justify-between font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">
+<div class="flex gap-6">
+<span class="">FILE_TYPE: DOCUMENT</span>
+<span class="">VERSION: 2.0</span>
+</div>
+<div class="">LAST_MODIFIED: 2025.01.24</div>
+</div>
+<!-- Content Canvas -->
+<article class="p-6 md:p-12 max-w-5xl mx-auto">
+<div class="space-y-8 mb-12">
+<h1 class="font-headline-lg text-headline-lg text-primary uppercase leading-tight">UI, UX &amp; Usability</h1>
+<h2 class="font-headline-sm text-headline-sm text-on-tertiary-container border-l-4 border-on-tertiary-container pl-4">Why these three are not the same thing, and how product teams can stop confusing them</h2>
+</div>
+<!-- Retro Diagram -->
+<div class="w-full mb-12 border-2 border-on-surface p-1 bg-surface-container-highest shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<div class="win95-inset bg-black p-0 overflow-hidden aspect-video">
+<img alt="System Architecture: Interface Hierarchy Diagram" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTqx8K_k6A7Xrp1XrB4R1-bYVew-t3NsthaNgKYSdsEdzdN-z1Q1O1QSbbKz8EYCU1Rsk_txeFg5kcCwhtNfG8a5z1c0qV_a3O2A32dzBeAtFSwYppNjF4DowT8FwreqJQyZcrAJZAS28XyRLjnD4xJS_1X-sKnsfjB_eGHvP89vu0wXTUPC0vj1MAHEaIuPB7SHjAUgigXwIHWusbIqPkh4H7r_1kdVjM_mMLzY8abMe-Wz8ora2_68ZphK2RWjmuz-zwUTxtvLQ">
+</div>
+<div class="bg-surface-container py-1 px-4 font-label-sm text-[10px] text-on-surface-variant flex justify-between italic">
+<span class="">FIGURE_4.1: USER-CENTERED_DESIGN_FRAMEWORK.IMG</span>
+<span class="">ZOOM: 100%</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<div class="lg:col-span-8 space-y-8 font-body-lg text-body-lg leading-relaxed">
+<p class="">There is one mix-up I keep noticing in product teams. UI, UX, and usability are often used as if they mean the same thing. They are connected, but they are not interchangeable. When we treat them as one thing, it becomes harder to understand what is actually working and what is not.</p>
+<p class="">Over time, I have found it useful to separate them into three simple ideas.</p>
+<section class="space-y-4">
+<h2 class="font-headline-sm text-primary flex items-center gap-2">
+<span class="w-8 h-8 bg-primary text-white flex items-center justify-center text-sm font-label-md">01</span>
+                    UI is what you see
+                </h2>
+<div class="win95-inset p-4 bg-surface-container-low border-l-4 border-primary">
+<p class="">User Interface is the visual side of a product. It includes the buttons, colors, typography, spacing, and layout people interact with on the screen.</p>
+<p class="mt-4">UI shapes the first impression. A clear and well-designed interface helps people feel oriented and comfortable. They can see where to look and what to do next.</p>
+<p class="mt-4">But UI has limits. Something can look polished and modern and still be confusing underneath. A nice interface does not always mean an easy experience.</p>
+</div>
+</section>
+<section class="space-y-4">
+<h2 class="font-headline-sm text-secondary flex items-center gap-2">
+<span class="w-8 h-8 bg-secondary text-white flex items-center justify-center text-sm font-label-md">02</span>
+                    UX is how things flow
+                </h2>
+<div class="win95-inset p-4 bg-surface-container-low border-l-4 border-secondary">
+<p class="">User Experience is about how the product works as a whole. It is the structure and flow behind the screens.</p>
+<p class="mt-4">It includes how users move from one step to another, how information is presented, and how decisions are guided along the way. When UX is working well, things feel smooth and predictable. People do not have to stop and figure things out at every step.</p>
+<p class="mt-4">It is less about individual screens and more about the journey from start to finish.</p>
+</div>
+</section>
+<section class="space-y-4">
+<h2 class="font-headline-sm text-on-tertiary-container flex items-center gap-2">
+<span class="w-8 h-8 bg-on-tertiary-container text-white flex items-center justify-center text-sm font-label-md">03</span>
+                    Usability is how well it works
+                </h2>
+<div class="win95-inset p-4 bg-surface-container-low border-l-4 border-on-tertiary-container">
+<p class="">Usability focuses on what happens when real people use the product.</p>
+<p class="mt-4">Can they complete their task? Do they understand what is happening? How much effort does it take?</p>
+<p class="mt-4">It is practical and measurable. It does not depend on how the product was intended to work, only on what actually happens in practice.</p>
+<p class="mt-4">You can have a product that looks great and has a thoughtful flow, but still struggle with usability if people get stuck, hesitate, or make mistakes along the way.</p>
+</div>
+</section>
+<section class="space-y-4 pt-8">
+<h2 class="font-label-md text-label-md bg-surface-container-highest w-fit px-4 py-1 border-b-2 border-on-surface">WHY THE DISTINCTION MATTERS</h2>
+<p class="">When these ideas are blended together, feedback gets vague. If someone says, “this design is not working,” it is not always clear what they mean. Is it a visual issue, a flow issue, or a usability issue?</p>
+<p class="">Separating UI, UX, and usability makes it easier to pinpoint the problem and respond in the right way. It also helps teams have clearer conversations. Instead of debating opinions, you can focus on specific parts of the product experience.</p>
+</section>
+<section class="space-y-4">
+<h2 class="font-label-md text-label-md bg-surface-container-highest w-fit px-4 py-1 border-b-2 border-on-surface">A QUICK EXAMPLE</h2>
+<p class="">Take a checkout flow. The UI is the visual design of the page, how the buttons look, and how information is arranged. The UX is the sequence of steps, from cart to payment to confirmation. Usability is whether people can complete the purchase easily, without confusion or hesitation.</p>
+<p class="">If users are dropping off, understanding which layer is causing the issue makes a big difference. Sometimes the problem is visual clarity. Sometimes it is the flow. Sometimes it only becomes obvious when you watch someone actually try to use it.</p>
+</section>
+<section class="space-y-4 border-t-2 border-on-surface border-dashed pt-8">
+<h2 class="font-label-md text-label-md bg-surface-container-highest w-fit px-4 py-1 border-b-2 border-on-surface">THE BIGGER PICTURE</h2>
+<p class="">You do not need to overcomplicate this. Being more intentional about these distinctions can go a long way. It helps teams design with more clarity, give better feedback, and make decisions based on what users actually experience, not just how things look on the surface.</p>
+<p class="">And in the end, that is what matters most.</p>
+</section>
+</div>
+<!-- Sidebar Terminal Diagnostics -->
+<aside class="lg:col-span-4 space-y-6">
+<div class="bg-on-surface text-secondary-fixed p-4 font-label-sm text-label-sm inset-bevel sticky top-24">
+<div class="flex items-center justify-between mb-4 border-b border-secondary-fixed pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span class="uppercase">system_diagnostics.log</span>
+</div>
+<span class="animate-pulse">●</span>
+</div>
+<div class="space-y-3">
+<div class="space-y-1">
+<p class="text-white opacity-60 text-[10px] uppercase">Analysis Layer 01:</p>
+<p class="flex gap-2"><span class="text-secondary-fixed">[OK]</span> <span class="">LAYER_SURFACE: UI</span></p>
+</div>
+<div class="space-y-1">
+<p class="text-white opacity-60 text-[10px] uppercase">Analysis Layer 02:</p>
+<p class="flex gap-2"><span class="text-secondary-fixed">[OK]</span> <span class="">LAYER_FLOW: UX</span></p>
+</div>
+<div class="space-y-1">
+<p class="text-white opacity-60 text-[10px] uppercase">Analysis Layer 03:</p>
+<p class="flex gap-2"><span class="text-secondary-fixed">[OK]</span> <span class="">LAYER_CORE: USABILITY</span></p>
+</div>
+<div class="pt-4 border-t border-secondary-fixed/30 space-y-2">
+<p class="text-white text-[11px] font-bold underline mb-2">MENTAL_MODEL.EXE:</p>
+<ul class="space-y-2">
+<li class="flex gap-2">
+<span class="text-secondary-fixed">&gt;&gt;</span>
+<span class=""><strong>UI:</strong> "How it looks."</span>
+</li>
+<li class="flex gap-2">
+<span class="text-secondary-fixed">&gt;&gt;</span>
+<span class=""><strong>UX:</strong> "How it works."</span>
+</li>
+<li class="flex gap-2">
+<span class="text-secondary-fixed">&gt;&gt;</span>
+<span class=""><strong>USABILITY:</strong> "How well it works for people."</span>
+</li>
+</ul>
+</div>
+<div class="mt-6 pt-4 border-t border-secondary-fixed/30 text-[10px] font-mono italic">
+                        SYSTEM_LOG: [SUCCESS] ALL LAYERS ALIGNED<br>
+                        VERIFYING_INTEGRITY... 100%
+                    </div>
+</div>
+<div class="absolute inset-0 dither-bg opacity-10 pointer-events-none"></div>
+<div style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background: linear-gradient(transparent 50%, rgba(0, 249, 63, 0.05) 50%) 0% 0% / 100% 4px; pointer-events: none; z-index: 5;"></div><div style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background: linear-gradient(transparent 50%, rgba(0, 249, 63, 0.05) 50%) 0% 0% / 100% 4px; pointer-events: none; z-index: 5;"></div></div>
+<!-- Additional Retro Box -->
+<div class="bg-surface-container border-2 border-on-surface raised-bevel p-4 space-y-3">
+<h4 class="font-label-sm text-[11px] font-bold border-b border-on-surface-variant pb-1">RELATED_FILES</h4>
+<ul class="space-y-1">
+<li class=""><a class="text-primary hover:underline text-[12px] flex items-center gap-2" href="#"><span class="material-symbols-outlined text-[14px]">description</span> Product_Strategy.doc</a></li>
+<li class=""><a class="text-primary hover:underline text-[12px] flex items-center gap-2" href="#"><span class="material-symbols-outlined text-[14px]">description</span> User_Research.xls</a></li>
+<li class=""><a class="text-primary hover:underline text-[12px] flex items-center gap-2" href="#"><span class="material-symbols-outlined text-[14px]">description</span> Design_Systems.sys</a></li>
+</ul>
+</div>
+</aside>
+</div>
+<!-- Footer Action -->
+<footer class="flex justify-center pt-12 mt-12 border-t-2 border-on-surface border-dashed">
+<a class="flex items-center gap-3 bg-surface border-2 border-on-surface px-8 py-4 font-headline-sm text-headline-sm text-primary raised-bevel active-inset group transition-transform" href="index.html">
+<span class="material-symbols-outlined transition-transform group-hover:-translate-x-2">arrow_back</span>
+            BACK_TO_HOME.EXE
+        </a>
+</footer>
+</article>
+</div>
+</main>
+<footer class="fixed bottom-0 w-full z-50 h-10 bg-surface border-t-2 border-on-surface flex items-center px-4 justify-between shadow-[0px_-2px_0px_0px_rgba(0,0,0,0.1)]">
+<div class="flex items-center gap-2 h-full py-1">
+<a href="index.html" class="win95-raised bg-surface h-full px-4 flex items-center gap-2 font-bold text-[14px] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none no-underline text-on-surface"><span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">terminal</span> Start</a>
+<div class="w-0.5 h-full bg-outline-variant mx-1"></div>
+<div class="win95-inset flex items-center px-3 h-full font-label-sm text-[12px] bg-surface-container-low italic whitespace-nowrap">
+        1995 MIAN_AHMAD_CORP. All Rights Reserved.
+    </div>
+</div>
+
+</footer>
+<script>
+    function updateClock() {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const clockEl = document.getElementById('system-clock');
+        if (clockEl) clockEl.textContent = timeString;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    const startBtn = document.querySelector('footer button');
+    if (startBtn) {
+        startBtn.addEventListener('click', () => {
+            alert("Mian_Ahmad_OS v2.0.0\nStatus: Online\nRole: Product Manager\nFocus: User Experience & SaaS Growth");
+        });
+    }
+
+    // Subtle scanline effect for terminal
+    const terminals = document.querySelectorAll('.bg-on-surface');
+    terminals.forEach(terminal => {
+        const scanline = document.createElement('div');
+        scanline.style.cssText = `
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 249, 63, 0.05) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 5;
+        `;
+        terminal.appendChild(scanline);
+    });
+</script>
+
+
+
+
+</body></html>

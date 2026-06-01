@@ -1,0 +1,386 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>UpCloud Demo Case Study | Mian Ahmad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Bevels */
+        .raised {
+            box-shadow: inset 1px 1px 0px 0px rgba(255, 255, 255, 1), 
+                        inset -1px -1px 0px 0px rgba(128, 128, 128, 1),
+                        1px 1px 0px 0px rgba(0, 0, 0, 1);
+        }
+        .inset {
+            box-shadow: inset 1px 1px 0px 0px rgba(128, 128, 128, 1), 
+                        inset -1px -1px 0px 0px rgba(255, 255, 255, 1);
+            background-color: #ffffff;
+        }
+        .win95-raised {
+            box-shadow: inset 1px 1px 0px 0px #ffffff, inset -1px -1px 0px 0px #808080, 1px 1px 0px 0px #000000;
+        }
+        .win95-inset {
+            box-shadow: inset 1px 1px 0px 0px #808080, inset -1px -1px 0px 0px #ffffff;
+            background-color: #ffffff;
+        }
+        .win95-button:active {
+            box-shadow: inset 1px 1px 0px 0px #808080, inset -1px -1px 0px 0px #ffffff;
+            transform: translate(1px, 1px);
+        }
+        .window-header {
+            background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+        }
+        .dither-progress {
+            background-image: radial-gradient(#000080 20%, transparent 20%);
+            background-size: 2px 2px;
+        }
+        body {
+            background-color: #dadada; /* surface-dim */
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#ed5700",
+                      "on-secondary-fixed": "#002203",
+                      "on-background": "#1a1c1c",
+                      "secondary": "#006e16",
+                      "on-secondary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "surface-container-highest": "#e3e2e2",
+                      "inverse-surface": "#2f3131",
+                      "on-tertiary-fixed": "#370e00",
+                      "on-primary-fixed": "#00006e",
+                      "surface-bright": "#faf9f9",
+                      "on-secondary-fixed-variant": "#00530e",
+                      "primary": "#00003c",
+                      "outline-variant": "#c6c5d5",
+                      "secondary-container": "#00f93f",
+                      "outline": "#767684",
+                      "surface-dim": "#dadada",
+                      "tertiary-fixed": "#ffdbce",
+                      "tertiary-container": "#411200",
+                      "surface-container-low": "#f4f3f3",
+                      "surface": "#faf9f9",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#1a1c1c",
+                      "background": "#faf9f9",
+                      "surface-variant": "#e3e2e2",
+                      "secondary-fixed": "#72ff70",
+                      "tertiary": "#1b0400",
+                      "surface-container": "#eeeeee",
+                      "surface-tint": "#4b53bc",
+                      "on-error": "#ffffff",
+                      "error": "#ba1a1a",
+                      "primary-fixed": "#e0e0ff",
+                      "on-surface-variant": "#464653",
+                      "primary-fixed-dim": "#bfc2ff",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#000080",
+                      "surface-container-high": "#e8e8e8",
+                      "on-tertiary-fixed-variant": "#7f2b00",
+                      "inverse-on-surface": "#f1f0f0",
+                      "tertiary-fixed-dim": "#ffb599",
+                      "inverse-primary": "#bfc2ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-container": "#777eea",
+                      "on-primary-fixed-variant": "#3239a3",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed-dim": "#00e639",
+                      "on-secondary-container": "#006d16"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "32px",
+                      "gutter": "16px",
+                      "margin-mobile": "16px",
+                      "container-max": "1200px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "headline-sm": ["Space Grotesk"],
+                      "body-md": ["JetBrains Mono"],
+                      "headline-lg": ["Space Grotesk"],
+                      "headline-lg-mobile": ["Space Grotesk"],
+                      "headline-md": ["Space Grotesk"],
+                      "body-lg": ["JetBrains Mono"],
+                      "label-sm": ["JetBrains Mono"],
+                      "label-md": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- TopAppBar (Updated to match SCREEN_40) -->
+<header class="fixed top-0 w-full z-50 h-10 bg-surface border-b-2 border-on-surface flex items-center px-4 justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<a href="index.html" class="flex items-center gap-1 font-bold hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">terminal</span>
+<span class="font-headline-sm text-[16px] tracking-tight">Mian Ahmad</span>
+</a>
+<nav class="hidden md:flex gap-4">
+
+
+
+
+</nav>
+</div>
+<div class="flex items-center gap-2">
+<div class="win95-inset px-2 py-0.5 font-label-sm text-[11px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span class="" id="system-clock">12:32 PM</span>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-12 px-4 md:px-margin-desktop flex justify-center">
+<!-- Main Window Container -->
+<div class="w-full max-w-container-max raised bg-surface overflow-hidden">
+<!-- Window Header -->
+<div class="window-header h-8 flex items-center justify-between px-2 text-white">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="cloud_done">cloud_done</span>
+<span class="font-label-sm text-label-sm tracking-wider">UpCloud_Demo_Study.exe</span>
+</div>
+<div class="flex gap-1">
+<button class="w-5 h-5 bg-surface text-on-surface raised flex items-center justify-center font-bold text-xs">_</button>
+<button class="w-5 h-5 bg-surface text-on-surface raised flex items-center justify-center font-bold text-xs">□</button>
+<button class="w-5 h-5 bg-error text-white raised flex items-center justify-center font-bold text-xs">X</button>
+</div>
+</div>
+<!-- Toolbar -->
+<div class="border-b-2 border-on-surface bg-surface-container p-2 flex gap-4 overflow-x-auto">
+<button class="flex items-center gap-1 px-2 py-1 hover:bg-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-base" data-icon="folder_open">folder_open</span> File
+                </button>
+<button class="flex items-center gap-1 px-2 py-1 hover:bg-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-base" data-icon="edit">edit</span> Edit
+                </button>
+<button class="flex items-center gap-1 px-2 py-1 hover:bg-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-base" data-icon="visibility">visibility</span> View
+                </button>
+<div class="h-6 w-[2px] bg-outline-variant"></div>
+<button class="flex items-center gap-1 px-2 py-1 hover:bg-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-base" data-icon="print">print</span>
+</button>
+<button class="flex items-center gap-1 px-2 py-1 hover:bg-surface-variant font-label-sm">
+<span class="material-symbols-outlined text-base" data-icon="help">help</span>
+</button>
+</div>
+<!-- Content Area (Scroll Pane) -->
+<div class="p-base md:p-gutter">
+<!-- Hero Section -->
+<section class="mb-12">
+<div class="flex flex-col lg:flex-row gap-8">
+<div class="lg:w-2/3">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-4">UpCloud Demo</h1>
+<p class="font-headline-sm text-headline-sm text-on-surface-variant mb-6 leading-tight">
+                                Using product demos to reduce onboarding friction and accelerate activation
+                            </p>
+<div class="inset p-4 mb-8 border-2 border-on-surface">
+<p class="font-body-lg text-body-lg italic">
+                                    "Building a faster path to a user’s “aha” moment by removing signup friction and focusing on radical simplification."
+                                </p>
+</div>
+</div>
+<div class="lg:w-1/3">
+<div class="raised bg-surface-container p-4 border border-on-surface h-full">
+<h3 class="font-label-sm text-label-sm text-outline mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="info">info</span> PROJECT_METADATA
+                                </h3>
+<div class="space-y-4">
+<div>
+<p class="font-label-sm text-label-sm uppercase text-primary">Role</p>
+<p class="font-body-md text-body-md font-bold">Product Manager</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm uppercase text-primary">Focus Areas</p>
+<div class="flex flex-wrap gap-2 mt-1">
+<span class="bg-secondary-container text-on-secondary-container border border-on-surface px-2 py-0.5 font-label-sm">Onboarding</span>
+<span class="bg-secondary-container text-on-secondary-container border border-on-surface px-2 py-0.5 font-label-sm">Activation</span>
+<span class="bg-secondary-container text-on-secondary-container border border-on-surface px-2 py-0.5 font-label-sm">PLG</span>
+</div>
+</div>
+<div>
+<p class="font-label-sm text-label-sm uppercase text-primary">Outcome</p>
+<p class="font-body-md text-body-md font-bold text-secondary">TTFV: ~5 min → &lt;1 min</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 border-4 border-on-surface relative overflow-hidden bg-black group h-80">
+<img alt="Server Infrastructure" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="A retro-digital 90s OS style treatment of a cloud server room. Apply a heavy CRT scanline effect, sharp dithering, and a high-contrast 'retro computing' color palette with deep blues and blacks. The image should look like a low-res asset loading on a legacy system. No hardware frames or monitors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx8-tpCZHChuAcyK6G3ukKIRJULjx5T6qUt66xoeY3qXm7IVw0bOywm0RNbJtLzkJbEmKOgrQCfvukWqPg9tV15OthFVv93al_6PKsfrK3gVrj_TudC45EUSMlXNy0NvbA91zEjzKHYc_tcVUKOAI7I7-bcDjkiqUfr6NX_0-WrdwLlQJjAt3FYMPGP5pMjZkl1GrAgCJl6WPeTY5ZNzSgbST7zn8hsCujp61lKL1-SrwrgfISmwGPonnDbN3PWsgXwFCaf8WajWU">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-8">
+<div class="text-white">
+<span class="bg-primary text-white border border-white px-3 py-1 font-label-md text-label-md inline-block mb-2">INFRA_VISUAL_01.JPG</span>
+<p class="font-headline-sm text-headline-sm">Optimizing Cloud Activation</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Content Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Strategy Section -->
+<div class="md:col-span-7 flex flex-col gap-gutter">
+<div class="raised bg-surface p-6 border-2 border-on-surface flex-1">
+<h2 class="font-headline-sm text-headline-sm flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="architecture">architecture</span> 
+                                Building a faster path to value
+                            </h2>
+<p class="font-body-md text-body-md mb-4 text-on-surface-variant">
+                                The core strategy revolved around eliminating the "Wall of Signup." For a technical audience like cloud developers, every form field added is a point of friction. I spearheaded a transition from a gate-first approach to a value-first experience.
+                            </p>
+<div class="inset p-4 bg-surface-container-low border border-on-surface">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-primary">OPTIMIZATION_LOG</span>
+<span class="w-3 h-3 bg-secondary rounded-full animate-pulse"></span>
+</div>
+<ul class="font-body-md text-body-md space-y-2 list-none">
+<li class="flex gap-2"><span class="text-secondary">&gt;&gt;</span> Removed mandatory credit card for demo entry</li>
+<li class="flex gap-2"><span class="text-secondary">&gt;&gt;</span> Implemented sandbox environment with dummy data</li>
+<li class="flex gap-2"><span class="text-secondary">&gt;&gt;</span> Enabled one-click instance deployment simulation</li>
+</ul>
+</div>
+</div>
+<div class="raised bg-primary text-white p-6 border-2 border-on-surface">
+<h2 class="font-headline-sm text-headline-sm mb-4">I repositioned the demo as onboarding</h2>
+<p class="font-body-md text-body-md opacity-90">
+                                Instead of treating the demo as a marketing teaser, we treated it as the first step of the product. By the time the user actually "signed up," they had already configured their virtual VPC and chosen their server specs.
+                            </p>
+</div>
+</div>
+<!-- Analysis Section -->
+<div class="md:col-span-5 flex flex-col gap-gutter">
+<div class="raised bg-surface-container-high p-6 border-2 border-on-surface">
+<h2 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span> BOTTLENECK_ANALYSIS
+                            </h2>
+<h3 class="font-headline-sm text-headline-sm mb-4">Signup uncertainty was the real bottleneck</h3>
+<div class="space-y-4">
+<div class="bg-surface p-3 inset border border-on-surface">
+<p class="font-label-sm text-label-sm text-error">ISSUE #001</p>
+<p class="font-body-md text-body-md">Users felt "locked in" before seeing the interface.</p>
+</div>
+<div class="bg-surface p-3 inset border border-on-surface">
+<p class="font-label-sm text-label-sm text-error">ISSUE #002</p>
+<p class="font-body-md text-body-md">Configuring a cloud server from scratch was overwhelming for trial users.</p>
+</div>
+</div>
+</div>
+<div class="raised bg-surface-variant p-6 border-2 border-on-surface flex-1">
+<h2 class="font-headline-sm text-headline-sm mb-4">Guided workflows replaced exploration</h2>
+<p class="font-body-md text-body-md mb-4">
+                                Open-ended tools often paralyze new users. We introduced pre-defined "templates" (e.g., 'Deploy a WordPress Stack') that automated 80% of the choices.
+                            </p>
+<div class="space-y-2 mt-4">
+<p class="font-label-sm text-label-sm uppercase">Adoption Rate</p>
+<div class="w-full h-8 inset p-[2px]">
+<div class="h-full dither-progress flex items-center justify-end px-2" style="width: 85%;">
+<span class="text-white font-label-sm">85%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Results Section -->
+<div class="md:col-span-12 raised bg-surface p-8 border-2 border-on-surface">
+<div class="flex flex-col md:flex-row gap-8 items-center">
+<div class="md:w-1/2">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Time to value dropped from 5 minutes to under 1 minute</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6">
+                                    By reducing cognitive load and physical interaction points, we accelerated the "First Deploy" success metric by 500%.
+                                </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="raised bg-white p-4 border border-on-surface">
+<p class="font-headline-md text-headline-md text-primary">5:12</p>
+<p class="font-label-sm text-label-sm text-outline">OLD_AVG_TTFV</p>
+</div>
+<div class="raised bg-secondary-container p-4 border border-on-surface">
+<p class="font-headline-md text-headline-md text-on-secondary-container">0:48</p>
+<p class="font-label-sm text-label-sm text-on-secondary-container">NEW_AVG_TTFV</p>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 w-full h-64 bg-surface-container-highest inset border-2 border-on-surface overflow-hidden relative">
+<img alt="Data Analytics" class="w-full h-full object-cover" data-alt="A retro-digital 90s OS style treatment of a technical chart showing a declining line. Apply a 1-bit style dithering effect and a high-contrast black and white palette. The final result should look like a low-resolution printed report or a screen grab from an old terminal. No hardware frames or monitors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8T-PHr6IsEkysFDbIUw6PBqIq4Z2iUkO6-dGabZS3-AKl4nxVsH7pFuqhK6zoivi7sjrclzV8w2MaNSvbI5dHWHX-Sv8wwtHAu_qXdsmU8CLO3EqvmdbTRX6JLUB7fohW3hfMShwgpGYMt6lA9VrPCdrF9eA_C7LODvtTkFbTGh7UjjiAGDNQ0V3VuS0ZAK1rPrXPYcUIX99zQwwVUTCG6ZXkp9JBEBoEHQEpNITKKt-YhiDS7WlOZ_ZTX1hjHN1LLkzTaDNWZko">
+</div>
+</div>
+</div>
+<!-- Conclusion -->
+<div class="md:col-span-12 raised bg-secondary text-white p-8 border-2 border-on-surface text-center">
+<h2 class="font-headline-sm text-headline-sm mb-4">Key Takeaway</h2>
+<p class="font-headline-md text-headline-md max-w-2xl mx-auto">
+                            Demos can drive activation, not just awareness.
+                        </p>
+<p class="font-body-md text-body-md mt-4 opacity-80">
+                            Stop telling them what it can do. Let them do it instantly.
+                        </p>
+</div>
+</div>
+<!-- Navigation Controls -->
+<div class="mt-12 pt-8 border-t-2 border-on-surface flex flex-col md:flex-row justify-between items-center gap-4">
+<a href="index.html" class="raised bg-surface-container px-6 py-3 font-label-md text-label-md flex items-center gap-2 border-2 border-on-surface hover:bg-surface-variant active:translate-x-[1px] active:translate-y-[1px] active:shadow-none">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span> BACK_TO_HOME.EXE
+                    </a>
+<div class="flex gap-4">
+<a href="case_study_calculator.html" class="raised bg-surface px-6 py-3 font-label-md text-label-md flex items-center gap-2 border-2 border-on-surface hover:bg-surface-variant active:translate-x-[1px] active:translate-y-[1px] active:shadow-none">
+                             NEXT_PROJECT <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 w-full z-50 h-10 bg-surface border-t-2 border-on-surface flex items-center px-4 justify-between shadow-[0px_-2px_0px_0px_rgba(0,0,0,0.1)]"><div class="flex items-center gap-2 h-full py-1"><a href="index.html" class="win95-raised win95-button bg-surface h-full px-4 flex items-center gap-2 font-bold text-[14px] cursor-pointer">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">terminal</span>
+Start
+</a><div class="w-0.5 h-full bg-outline-variant mx-1"></div><div class="win95-inset flex items-center px-3 h-full font-label-sm text-[12px] bg-surface-container-low italic whitespace-nowrap">© 1995 MIAN_AHMAD_CORP. All Rights Reserved.</div></div><div class="hidden md:flex gap-4"></div></footer>
+<script>
+        // Simple Micro-interaction: Window Shake on click of "X"
+        document.querySelector('.bg-error').addEventListener('click', () => {
+            const win = document.querySelector('.max-w-container-max');
+            win.style.transform = 'translateX(4px)';
+            setTimeout(() => { win.style.transform = 'translateX(-4px)'; }, 50);
+            setTimeout(() => { win.style.transform = 'translateX(4px)'; }, 100);
+            setTimeout(() => { win.style.transform = 'translateX(0)'; }, 150);
+        });
+    </script>
+<script>
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+            const clockEl = document.getElementById('system-clock');
+            if (clockEl) clockEl.textContent = timeString;
+        }
+        setInterval(updateClock, 60000);
+        updateClock();
+    </script>
+
+
+
+</body></html>

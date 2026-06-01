@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mian Ahmad - Lessons Learned</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .bevel-raised {
+            box-shadow: 1px 1px 0px 0px rgba(255,255,255,1) inset, -1px -1px 0px 0px rgba(128,128,128,1) inset, -2px -2px 0px 0px rgba(0,0,0,1) inset;
+        }
+        
+        .bevel-inset {
+            box-shadow: -1px -1px 0px 0px rgba(255,255,255,1) inset, 1px 1px 0px 0px rgba(128,128,128,1) inset;
+        }
+
+        .window-header-gradient {
+            background: linear-gradient(90deg, #000080 0%, #1010b0 100%);
+        }
+
+        .dither-bg {
+            background-image: radial-gradient(#464653 0.5px, transparent 0.5px);
+            background-size: 4px 4px;
+        }
+
+        .scrollbar-retro::-webkit-scrollbar {
+            width: 16px;
+        }
+        .scrollbar-retro::-webkit-scrollbar-track {
+            background: #eeeeee;
+            box-shadow: inset 1px 1px 0px #808080;
+        }
+        .scrollbar-retro::-webkit-scrollbar-thumb {
+            background: #dadada;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+        }
+        
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(1000%); }
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 0, 128, 0.05);
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            pointer-events: none;
+            animation: scanline 8s linear infinite;
+        }
+
+        .win95-inset {
+            box-shadow: inset 1px 1px 0px 0px #808080, inset -1px -1px 0px 0px #ffffff;
+            background-color: #ffffff;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#006d16",
+                        "on-secondary-fixed-variant": "#00530e",
+                        "surface-tint": "#4b53bc",
+                        "primary-fixed": "#e0e0ff",
+                        "background": "#faf9f9",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#ffdbce",
+                        "primary-fixed-dim": "#bfc2ff",
+                        "on-primary-fixed-variant": "#3239a3",
+                        "inverse-surface": "#2f3131",
+                        "on-tertiary-fixed": "#370e00",
+                        "surface-bright": "#faf9f9",
+                        "surface": "#faf9f9",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "outline-variant": "#c6c5d5",
+                        "surface-container-low": "#f4f3f3",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#ed5700",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#411200",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#00e639",
+                        "on-background": "#1a1c1c",
+                        "surface-container-high": "#e8e8e8",
+                        "inverse-primary": "#bfc2ff",
+                        "secondary-fixed": "#72ff70",
+                        "on-secondary-fixed": "#002203",
+                        "on-surface": "#1a1c1c",
+                        "tertiary-fixed-dim": "#ffb599",
+                        "on-primary-fixed": "#00006e",
+                        "secondary": "#006e16",
+                        "outline": "#767684",
+                        "surface-container": "#eeeeee",
+                        "on-tertiary-fixed-variant": "#7f2b00",
+                        "secondary-container": "#00f93f",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e3e2e2",
+                        "surface-dim": "#dadada",
+                        "on-surface-variant": "#464653",
+                        "surface-container-highest": "#e3e2e2",
+                        "primary-container": "#000080",
+                        "on-primary-container": "#777eea",
+                        "tertiary": "#1b0400",
+                        "primary": "#00003c",
+                        "inverse-on-surface": "#f1f0f0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "container-max": "1200px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["JetBrains Mono"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-sm": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-primary-container selection:text-on-primary-container min-h-screen">
+<div class="scanline"></div>
+<!-- Top AppBar (The System Menu) -->
+<header class="fixed top-0 w-full z-50 h-10 bg-surface border-b-2 border-on-surface flex items-center px-4 justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-1 font-bold hover:opacity-80 transition-opacity" href="index.html">
+<span class="material-symbols-outlined text-primary" style='font-variation-settings: "FILL" 1;'>terminal</span>
+<span class="font-headline-sm text-[16px] tracking-tight">Mian Ahmad</span>
+</a>
+<nav class="hidden md:flex gap-4">
+</nav>
+</div>
+<div class="flex items-center gap-2">
+<div class="win95-inset px-2 py-0.5 font-label-sm text-[11px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span class="" id="system-clock">08:36 PM</span>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-24 px-4 md:px-gutter max-w-container-max mx-auto min-h-screen overflow-y-auto">
+<!-- Window: Lessons_Learnt.txt -->
+<article class="bg-surface-container border-2 border-on-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] max-w-4xl mx-auto overflow-hidden mb-10">
+<!-- Window Title Bar -->
+<div class="window-header-gradient h-10 flex items-center justify-between px-3 border-b-2 border-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-surface text-[18px]" data-icon="article">article</span>
+<h1 class="text-white font-label-md text-label-md tracking-tight uppercase">Lessons_Learnt.txt</h1>
+</div>
+<div class="flex gap-1">
+<button class="w-6 h-6 bg-surface-variant border border-on-surface flex items-center justify-center hover:bg-white active:bg-surface-dim shadow-[1px_1px_0px_white_inset]">
+<span class="material-symbols-outlined text-[14px]" data-icon="minimize">minimize</span>
+</button>
+<button class="w-6 h-6 bg-surface-variant border border-on-surface flex items-center justify-center hover:bg-white active:bg-surface-dim shadow-[1px_1px_0px_white_inset]">
+<span class="material-symbols-outlined text-[14px]" data-icon="check_box_outline_blank">check_box_outline_blank</span>
+</button>
+<button class="w-6 h-6 bg-surface-variant border border-on-surface flex items-center justify-center hover:bg-white active:bg-surface-dim shadow-[1px_1px_0px_white_inset]">
+<span class="material-symbols-outlined text-[14px]" data-icon="close">close</span>
+</button>
+</div>
+</div>
+<!-- Content Area -->
+<div class="p-6 md:p-10 bg-white border-8 border-surface-container scrollbar-retro">
+<!-- Article Header -->
+<!-- Hero Image -->
+<div class="mb-12 bevel-inset p-2 bg-surface">
+<img alt="Spekly Oy Workspace" class="w-full h-64 object-cover filter grayscale contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvPufo_s8M41GaCCBQnT9EHdmt6pFvG7C3-OWsaBFHizh--HuTrtuY_Jtjt073ow-v7fRc53g-kifWYjDVl2Jy1LGDlPfXUeuPnSaplC63nsoHOywo4xfr0Kwpx_ElnUZpVvMMpeUhYG2EfLTOqgs5RDmOnO4V_DbQ1Cm86ZjS2_adPkLgazRPmDEp-xFr82m9uIn-B0F-H3Bqo8-9B1o076OLKzsexB0g8GivP1AgLFrzA0AnFvFYmeNItciy-b1ilEI0nmKBF7k"/>
+</div>
+<!-- Main Content Body -->
+<div class="space-y-8 font-body-md text-body-md leading-relaxed text-on-surface">
+<section>
+<h3 class="font-label-md text-label-md bg-surface-container-highest inline-block px-2 mb-3 border-r-4 border-primary">01_INTRODUCTION</h3>
+<p class="">
+                            Building Spekly Oy wasn't just about writing code or designing interfaces; it was about defining how people converse in a digital age. As a co-founder and Product Manager, my journey was a constant dance between high-level vision and the granular reality of technical constraints. We focused intensely on the architecture of conversations, attempting to bridge the gap between human nuance and machine-readable data.
+                        </p>
+</section>
+<!-- Key Takeaway Box -->
+<div class="bg-surface-container-low border-2 border-on-surface p-4 flex gap-4">
+<div class="flex-shrink-0 w-12 h-12 bg-primary flex items-center justify-center text-white bevel-raised">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-primary mb-1">SYSTEM_LOG_REF_01:</p>
+<p class="font-body-md text-body-md font-bold">The most satisfying work often lies in solving the most vaguely defined problems. Precision is the reward of persistence.</p>
+</div>
+</div>
+<section>
+<h3 class="font-label-md text-label-md bg-surface-container-highest inline-block px-2 mb-3 border-r-4 border-primary">02_THE_TIME_TRAP</h3>
+<p class="">
+                            In the early stages, I realized that time is not neutral. Every hour spent perfecting a feature that three users loved was an hour not spent reaching the next three hundred. The tension between customer closeness and scaling growth was palpable. Being "close to the customer" is a startup superpower, but it can also become a straightjacket if you aren't willing to step back and build for the persona rather than the person.
+                        </p>
+</section>
+<section class="grid md:grid-cols-2 gap-8 items-start">
+<div class="bevel-inset p-4 bg-white">
+<h4 class="font-label-sm text-label-sm mb-2 text-on-tertiary-fixed-variant">/ TRADE_OFF_MATRIX</h4>
+<ul class="space-y-2 font-label-md text-label-md">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span> Support Existing</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-error" data-icon="cancel">cancel</span> New Market Reach</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span> Manual Onboarding</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-error" data-icon="cancel">cancel</span> Scalable Self-Serve</li>
+</ul>
+</div>
+<div>
+<p class="">
+                                I faced the recurring realization that to scale, one must embrace the discomfort of imperfection. We had to choose between two "good" options daily: supporting the loyal few or building infrastructure for the silent many.
+                            </p>
+</div>
+</section>
+<section>
+<h3 class="font-label-md text-label-md bg-surface-container-highest inline-block px-2 mb-3 border-r-4 border-primary">03_THE_SCALING_DISCOMFORT</h3>
+<p class="">
+                            The transition from a "hands-on" founder to a strategic PM is jarring. Stepping back allows the system to breathe, but it feels like losing control. I learned that my role wasn't to prevent every error, but to build a system where errors are cheap and learning is fast. This is the core of early-stage PM work: building the machine that builds the product.
+                        </p>
+</section>
+<!-- Conclusion Dithered Box -->
+<footer class="dither-bg border-4 border-on-surface p-8 text-center mt-12">
+<div class="bg-white p-6 inline-block border-2 border-on-surface shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<h3 class="font-headline-sm text-headline-sm mb-4">EXECUTION_SUMMARY</h3>
+<p class="font-body-md text-body-md mb-6 max-w-md mx-auto">
+                                Startups are not about choosing between right and wrong. They are about choosing between two good options, both of which come with consequences you must be willing to own.
+                            </p>
+<a class="inline-block bg-primary text-white font-label-md text-label-md px-8 py-3 bevel-raised active:translate-x-[1px] active:translate-y-[1px] active:shadow-none uppercase tracking-widest no-underline" href="index.html">
+                                BACK_TO_HOME.EXE
+                            </a>
+</div>
+</footer>
+</div>
+</div>
+<!-- Window Status Bar -->
+<div class="h-8 bg-surface-container flex items-center px-3 gap-6 border-t border-outline-variant font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="save">save</span>
+<span class="">AUTO_SAVED</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="memory">memory</span>
+<span class="">RAM: 64MB_USED</span>
+</div>
+<div class="ml-auto flex items-center gap-4">
+<span class="">L: 142</span>
+<span class="">C: 12</span>
+<span class="w-16 h-4 bg-secondary-container bevel-inset relative overflow-hidden">
+<div class="absolute inset-0 bg-primary opacity-20 dither-bg" style="width: 91.2%;"></div>
+<div class="absolute inset-y-0 left-0 bg-primary w-[85%]"></div>
+</span>
+</div>
+</div>
+</article>
+</main>
+<!-- Footer Shell -->
+<footer class="fixed bottom-0 w-full z-50 h-10 bg-surface border-t-2 border-on-surface flex items-center px-4 justify-between shadow-[0px_-2px_0px_0px_rgba(0,0,0,0.1)]">
+<div class="flex items-center gap-2 h-full py-1">
+<a class="win95-raised win95-button bg-surface h-full px-4 flex items-center gap-2 font-bold text-[14px] hover:bg-surface-container-high active:translate-x-[1px] active:translate-y-[1px] border border-on-surface shadow-[1px_1px_0px_white_inset] no-underline" href="index.html">
+<span class="material-symbols-outlined text-primary text-[20px]" style='font-variation-settings: "FILL" 1;'>terminal</span>
+                Start
+            </a>
+<div class="w-0.5 h-full bg-outline-variant mx-1"></div>
+<div class="win95-inset flex items-center px-3 h-full font-label-sm text-[12px] bg-surface-container-low italic whitespace-nowrap">
+                © 1995 MIAN_AHMAD_CORP. All Rights Reserved.
+            </div>
+</div>
+<div class="hidden md:flex gap-4">
+</div>
+</footer>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button, a.win95-button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.style.boxShadow = 'inset 2px 2px 0px 0px rgba(0,0,0,1), inset -1px -1px 0px 0px rgba(255,255,255,1)';
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.style.boxShadow = '';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.boxShadow = '';
+            });
+        });
+
+        // Simulating loading state for the progress bar in the window status
+        let progress = 85;
+        const progressBar = document.querySelector('.w-16.h-4.bg-secondary-container div.bg-primary');
+        setInterval(() => {
+            progress = progress > 98 ? 85 : progress + 0.1;
+            if(progressBar) progressBar.style.width = progress + '%';
+        }, 100);
+    </script>
+<script>
+        // System Clock Logic
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const clockEl = document.getElementById('system-clock');
+            if (clockEl) clockEl.textContent = timeString;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body></html>

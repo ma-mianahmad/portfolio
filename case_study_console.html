@@ -1,0 +1,387 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Cloud Management Console | Mian Ahmad Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#411200",
+                    "outline-variant": "#c6c5d5",
+                    "tertiary": "#1b0400",
+                    "secondary-fixed-dim": "#00e639",
+                    "inverse-surface": "#2f3131",
+                    "surface-container-highest": "#e3e2e2",
+                    "on-secondary-container": "#006d16",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f1f0f0",
+                    "surface-container-high": "#e8e8e8",
+                    "outline": "#767684",
+                    "on-primary-container": "#777eea",
+                    "tertiary-fixed-dim": "#ffb599",
+                    "on-secondary-fixed-variant": "#00530e",
+                    "background": "#faf9f9",
+                    "secondary-container": "#00f93f",
+                    "primary-fixed-dim": "#bfc2ff",
+                    "secondary-fixed": "#72ff70",
+                    "on-secondary-fixed": "#002203",
+                    "surface-tint": "#4b53bc",
+                    "inverse-primary": "#bfc2ff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#ffdbce",
+                    "on-tertiary-fixed-variant": "#7f2b00",
+                    "on-tertiary-fixed": "#370e00",
+                    "on-tertiary-container": "#ed5700",
+                    "on-surface-variant": "#464653",
+                    "surface-variant": "#e3e2e2",
+                    "surface-container-low": "#f4f3f3",
+                    "primary": "#00003c",
+                    "on-surface": "#1a1c1c",
+                    "on-error": "#ffffff",
+                    "primary-container": "#000080",
+                    "surface-bright": "#faf9f9",
+                    "on-primary-fixed-variant": "#3239a3",
+                    "surface-container": "#eeeeee",
+                    "surface": "#faf9f9",
+                    "secondary": "#006e16",
+                    "primary-fixed": "#e0e0ff",
+                    "on-primary-fixed": "#00006e",
+                    "surface-dim": "#dadada",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1a1c1c",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "base": "8px",
+                    "container-max": "1200px",
+                    "gutter": "16px",
+                    "margin-desktop": "32px"
+            },
+            "fontFamily": {
+                    "body-md": ["JetBrains Mono"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-md": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "headline-lg-mobile": ["Space Grotesk"],
+                    "body-lg": ["JetBrains Mono"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-sm": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                    "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .neo-bevel {
+            box-shadow: 1px 1px 0px 0px rgba(255,255,255,1) inset, -1px -1px 0px 0px rgba(128,128,128,1) inset, -2px -2px 0px 0px rgba(0,0,0,1) inset;
+        }
+        .neo-bevel-inset {
+            box-shadow: 1px 1px 0px 0px rgba(0,0,0,1) inset, -1px -1px 0px 0px rgba(255,255,255,1) inset;
+        }
+        .active-press:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0px 0px rgba(0,0,0,1) inset;
+        }
+        .dither-progress {
+            background-image: radial-gradient(circle, rgba(0,0,128,0.2) 1px, transparent 1px);
+            background-size: 4px 4px;
+        }
+        .scroll-pane {
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #000080 #eeeeee;
+        }
+        .win95-inset {
+            box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px #808080;
+            background: #c0c0c0;
+        }
+        .win95-raised {
+            box-shadow: inset 1px 1px #fff, inset -1px -1px #0a0a0a, inset 2px 2px #dfdfdf, inset -2px -2px #808080;
+            background: #c0c0c0;
+        }
+    </style>
+</head>
+<body class="text-on-surface font-body-md overflow-x-hidden" style="background-color: #008080;">
+<!-- Top Navigation Header -->
+<header class="fixed top-0 w-full z-50 h-10 bg-[#c0c0c0] border-b-2 border-on-surface flex items-center px-4 justify-between shadow-sm">
+<div class="flex items-center gap-6">
+<a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity cursor-pointer">
+<div class="win95-raised p-1 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">terminal</span>
+</div>
+<span class="font-headline-sm text-[16px] tracking-tight font-bold">Mian Ahmad</span>
+</a>
+<nav class="hidden md:flex gap-1">
+
+
+
+
+</nav>
+</div>
+<div class="flex items-center gap-2">
+<div class="win95-inset px-3 py-1 font-label-sm text-[11px] flex items-center gap-2 min-w-[90px] justify-center">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span class="font-bold tabular-nums" id="system-clock">12:35 PM</span>
+</div>
+</div>
+</header>
+<main class="pt-24 px-gutter max-w-container-max mx-auto pb-32">
+<!-- Main Application Window -->
+<div class="bg-surface-container border-2 border-on-surface shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] flex flex-col h-full">
+<!-- Window Title Bar -->
+<div class="bg-primary-container h-10 flex items-center justify-between px-4 border-b-2 border-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-white text-[18px]" data-icon="cloud">cloud</span>
+<span class="text-white font-bold tracking-tight font-label-md text-label-md">Cloud_Management_Console.exe</span>
+</div>
+<div class="flex gap-1">
+<button class="w-6 h-6 bg-surface-container border-2 border-on-surface flex items-center justify-center active:translate-x-[1px] active:translate-y-[1px]"><span class="material-symbols-outlined text-xs" data-icon="minimize">minimize</span></button>
+<button class="w-6 h-6 bg-surface-container border-2 border-on-surface flex items-center justify-center active:translate-x-[1px] active:translate-y-[1px]"><span class="material-symbols-outlined text-xs" data-icon="check_box_outline_blank">check_box_outline_blank</span></button>
+<button class="w-6 h-6 bg-surface-container border-2 border-on-surface flex items-center justify-center active:translate-x-[1px] active:translate-y-[1px] hover:bg-error hover:text-white"><span class="material-symbols-outlined text-xs" data-icon="close">close</span></button>
+</div>
+</div>
+<!-- Application Shell Layout -->
+<div class="flex flex-col lg:flex-row flex-1">
+<!-- Sidebar Metadata Section -->
+<aside class="w-full lg:w-72 border-r-2 border-on-surface bg-surface-container-low p-6 flex flex-col gap-6">
+<div>
+<p class="font-label-sm text-label-sm text-outline mb-2 uppercase">Project Role</p>
+<div class="bg-surface-container-lowest border-2 border-on-surface p-3 neo-bevel-inset">
+<p class="font-bold text-primary">Product Manager</p>
+</div>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline mb-2 uppercase">Core Focus</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 border border-on-surface text-label-sm font-bold">Console UX</span>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 border border-on-surface text-label-sm font-bold">Onboarding</span>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 border border-on-surface text-label-sm font-bold">Billing</span>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 border border-on-surface text-label-sm font-bold">Growth</span>
+</div>
+</div>
+<div class="flex-1">
+<p class="font-label-sm text-label-sm text-outline mb-2 uppercase">Impact Metrics</p>
+<div class="space-y-3">
+<div class="border-2 border-on-surface p-3 bg-primary-container text-white">
+<p class="text-[24px] font-bold">-37%</p>
+<p class="text-xs uppercase opacity-80">Onboarding Time</p>
+</div>
+<div class="border-2 border-on-surface p-3 bg-secondary text-white">
+<p class="text-[24px] font-bold">+10%</p>
+<p class="text-xs uppercase opacity-80">First Deployment</p>
+</div>
+<div class="border-2 border-on-surface p-3 bg-tertiary-container text-white">
+<p class="text-[24px] font-bold">2.0x</p>
+<p class="text-xs uppercase opacity-80">PaaS Adoption</p>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-outline">
+<a class="w-full py-3 bg-surface-container border-2 border-on-surface active:translate-x-[1px] active:translate-y-[1px] active:shadow-none shadow-[1px_1px_0px_0px_rgba(255,255,255,1)_inset,-1px_-1px_0px_0px_rgba(128,128,128,1)_inset] hover:bg-surface-variant font-bold flex items-center justify-center gap-2 text-[13px]" href="index.html">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span>
+    BACK_TO_HOME.EXE
+</a>
+</div>
+</aside>
+<!-- Scrollable Content Canvas -->
+<div class="flex-1 scroll-pane bg-surface p-gutter md:p-margin-desktop">
+<!-- Hero Section -->
+<section class="mb-12">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-4 leading-tight">
+                            Cloud Management Console
+                        </h1>
+<p class="font-headline-sm text-headline-sm text-on-surface-variant mb-6 max-w-2xl">
+                            Making complex cloud infrastructure feel intuitive, calm, and easy to manage.
+                        </p>
+<div class="bg-surface-container-high border-l-4 border-primary-container p-6 neo-bevel-inset">
+<p class="font-body-lg text-body-lg italic text-on-surface">
+                                "Building a more intuitive and usable management experience that reduces cognitive load, accelerates onboarding, and helps users succeed with less friction than traditional cloud consoles."
+                            </p>
+</div>
+</section>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Section 1 -->
+<div class="group border-2 border-on-surface bg-surface-container p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-primary flex items-center justify-center border-2 border-on-surface">
+<span class="material-symbols-outlined text-white" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm">Easier to Use</h2>
+</div>
+<p class="text-on-surface-variant mb-4">
+                                Most cloud consoles are designed for machines, not humans. My focus was on the daily human experience: minimizing the "click-depth" to launch resources and ensuring that critical status information is always visible but never shouting.
+                            </p>
+<div class="h-2 w-full bg-surface-container-low border border-on-surface relative overflow-hidden mb-2">
+<div class="absolute inset-y-0 left-0 bg-primary dither-progress w-[85%]"></div>
+</div>
+<p class="font-label-sm text-label-sm text-outline">User Effort Reduction: 85%</p>
+</div>
+<!-- Section 2 -->
+<div class="group border-2 border-on-surface bg-surface-container-high p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 bg-secondary flex items-center justify-center border-2 border-on-surface">
+<span class="material-symbols-outlined text-white" data-icon="search_check">search_check</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-secondary">Validated Direction</h2>
+</div>
+<p class="text-on-surface-variant">
+                                The product strategy wasn't just intuition. It was backed by thesis research comparing industry giants like AWS with more specialized providers like UpCloud. This validation highlighted that cognitive load is the single biggest barrier to entry in infrastructure management.
+                            </p>
+</div>
+<!-- Section 3 - Large Span -->
+<div class="md:col-span-2 border-2 border-on-surface bg-surface-container-low p-8 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<div class="flex flex-col lg:flex-row gap-8 items-center">
+<div class="flex-1">
+<h2 class="font-headline-md text-headline-md mb-6">Onboarding Simplified</h2>
+<p class="font-body-lg text-body-lg text-on-surface mb-6">
+                                        The most critical moment is the user's first deployment. By streamlining the flow and introducing 'guided intents', we dropped average onboarding time from **8 minutes down to 5 minutes**.
+                                    </p>
+<ul class="space-y-4">
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<p class="">Removed 4 non-essential steps from the initial registration sequence.</p>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+<p class="">Introduced context-aware 'Quick Start' templates for common dev stacks.</p>
+</li>
+</ul>
+</div>
+<div class="w-full lg:w-1/2 flex flex-col gap-4">
+<div class="border-2 border-on-surface p-4 bg-white neo-bevel-inset">
+<div class="flex justify-between mb-2">
+<span class="font-bold">First Deployment Completion</span>
+<span class="text-secondary font-bold">+10%</span>
+</div>
+<div class="h-6 w-full bg-surface-container border border-on-surface">
+<div class="h-full bg-secondary-container border-r-2 border-on-surface w-[70%]"></div>
+</div>
+</div>
+<div class="border-2 border-on-surface p-4 bg-white neo-bevel-inset">
+<div class="flex justify-between mb-2">
+<span class="font-bold">PaaS Adoption (Managed Databases)</span>
+<span class="text-secondary font-bold">2x</span>
+</div>
+<div class="h-6 w-full bg-surface-container border border-on-surface">
+<div class="h-full bg-primary-container border-r-2 border-on-surface w-[90%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 4 -->
+<div class="border-2 border-on-surface bg-surface-container p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+<h3 class="font-headline-sm text-headline-sm mb-4">Billing Redesigned</h3>
+<p class="text-on-surface-variant mb-6">
+                                "Bill shock" is the primary reason for churn in cloud services. We redesigned the billing portal to focus on transparency, using simple language and predictive cost modeling to build long-term user trust.
+                            </p>
+<div class="p-4 bg-surface-container-highest border-2 border-on-surface-variant font-body-md text-sm border-dashed">
+                                PREDICTED SPEND: <span class="font-bold">$42.12</span> / MO<br>
+                                STATUS: <span class="text-secondary font-bold">OPTIMIZED</span>
+</div>
+</div>
+<!-- Section 5 -->
+<div class="border-2 border-on-surface bg-primary p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-white">
+<h3 class="font-headline-sm text-headline-sm mb-4">Business Impact</h3>
+<p class="opacity-90 mb-6">
+                                A "Calmer Console" isn't just about aesthetics; it's a competitive differentiator. By making the product more accessible, we captured a segment of mid-market developers who were previously alienated by enterprise complexity.
+                            </p>
+<div class="flex gap-4">
+<div class="bg-white/10 p-3 flex-1 border border-white/20">
+<span class="text-xs uppercase block mb-1">Retention</span>
+<span class="text-xl font-bold">+12%</span>
+</div>
+<div class="bg-white/10 p-3 flex-1 border border-white/20">
+<span class="text-xs uppercase block mb-1">NPS</span>
+<span class="text-xl font-bold">72</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Key Takeaway Banner -->
+<div class="mt-12 bg-tertiary-container text-tertiary-fixed border-2 border-on-surface p-8 relative overflow-hidden group">
+<div class="relative z-10">
+<p class="font-label-sm text-label-sm uppercase mb-2 tracking-widest">The Core Insight</p>
+<h2 class="font-headline-md text-headline-md">Great console UX is the ultimate growth lever for cloud platforms.</h2>
+</div>
+<div class="absolute -right-10 -bottom-10 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[200px]" data-icon="trending_up">trending_up</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Retro Footer -->
+<footer class="fixed bottom-0 w-full z-50 h-10 bg-surface border-t-2 border-on-surface flex items-center px-4 justify-between shadow-[0px_-2px_0px_0px_rgba(0,0,0,0.1)]">
+<div class="flex items-center gap-2 h-full py-1">
+<a href="index.html" class="win95-raised win95-button bg-[#c0c0c0] h-full px-4 flex items-center gap-2 font-bold text-[14px] active-press">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">terminal</span>
+                Start
+            </a>
+<div class="w-0.5 h-full bg-outline-variant mx-1"></div>
+<div class="win95-inset flex items-center px-3 h-full font-label-sm text-[12px] bg-[#c0c0c0] italic whitespace-nowrap">
+                © 1995 MIAN_AHMAD_CORP. All Rights Reserved.
+            </div>
+</div>
+
+</footer>
+<script>
+    // Real-time local clock
+    function updateClock() {
+        const now = new Date();
+        const options = { 
+            hour: '2-digit', 
+            minute: '2-digit', 
+            hour12: true 
+        };
+        const timeString = now.toLocaleTimeString('en-US', options).toUpperCase();
+        document.getElementById('system-clock').textContent = timeString;
+    }
+    
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // Simple micro-interaction for the window 'X' button to return home
+    const closeBtn = document.querySelector('[data-icon="close"]');
+    if (closeBtn) {
+        closeBtn.parentElement.addEventListener('click', () => {
+            if(confirm('Exit Cloud_Management_Console.exe?')) {
+                window.location.href = '/';
+            }
+        });
+    }
+</script>
+
+
+
+
+
+
+</body></html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Mian Ahmad | Product Management Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#00e639",
+                        "on-secondary-container": "#006d16",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#777eea",
+                        "on-primary-fixed-variant": "#3239a3",
+                        "tertiary-fixed-dim": "#ffb599",
+                        "inverse-primary": "#bfc2ff",
+                        "primary-container": "#000080",
+                        "surface-container-high": "#e8e8e8",
+                        "inverse-on-surface": "#f1f0f0",
+                        "on-tertiary-fixed-variant": "#7f2b00",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#e0e0ff",
+                        "on-surface-variant": "#464653",
+                        "primary-fixed-dim": "#bfc2ff",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#eeeeee",
+                        "surface-tint": "#4b53bc",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e3e2e2",
+                        "secondary-fixed": "#72ff70",
+                        "tertiary": "#1b0400",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1a1c1c",
+                        "background": "#faf9f9",
+                        "surface-dim": "#dadada",
+                        "surface-container-low": "#f4f3f3",
+                        "surface": "#faf9f9",
+                        "tertiary-container": "#411200",
+                        "tertiary-fixed": "#ffdbce",
+                        "secondary-container": "#00f93f",
+                        "outline": "#767684",
+                        "on-primary-fixed": "#00006e",
+                        "surface-bright": "#faf9f9",
+                        "on-secondary-fixed-variant": "#00530e",
+                        "primary": "#00003c",
+                        "outline-variant": "#c6c5d5",
+                        "inverse-surface": "#2f3131",
+                        "on-tertiary-fixed": "#370e00",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e3e2e2",
+                        "on-tertiary-container": "#ed5700",
+                        "on-secondary-fixed": "#002203",
+                        "on-background": "#1a1c1c",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#006e16"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "container-max": "1200px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["JetBrains Mono"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-lg": ["JetBrains Mono"],
+                        "body-md": ["JetBrains Mono"],
+                        "headline-lg": ["Space Grotesk"],
+                        "headline-sm": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style class="">
+        .win95-raised {
+            box-shadow: inset 1px 1px 0px 0px #ffffff, inset -1px -1px 0px 0px #808080, 1px 1px 0px 0px #000000;
+        }
+        .win95-inset {
+            box-shadow: inset 1px 1px 0px 0px #808080, inset -1px -1px 0px 0px #ffffff;
+            background-color: #ffffff;
+        }
+        .win95-button:active {
+            box-shadow: inset 1px 1px 0px 0px #808080, inset -1px -1px 0px 0px #ffffff;
+            transform: translate(1px, 1px);
+        }
+        .window-header {
+            background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
+        }
+        body {
+            background-color: #008080; /* Classic Teal Desktop */
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface selection:bg-primary-container selection:text-white">
+<!-- Top AppBar (The System Menu) -->
+<header class="fixed top-0 w-full z-50 h-10 bg-surface border-b-2 border-on-surface flex items-center px-4 justify-between shadow-sm">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: &quot;FILL&quot; 1;">terminal</span>
+<span class="font-headline-sm text-[16px] tracking-tight">Mian Ahmad</span>
+</div>
+<nav class="hidden md:flex gap-4">
+<a class="px-2 py-1 hover:bg-surface-container-high font-label-md text-on-surface-variant" href="#work">Work</a>
+<a class="px-2 py-1 hover:bg-surface-container-high font-label-md text-on-surface-variant" href="#journey">Journey</a>
+<a class="px-2 py-1 hover:bg-surface-container-high font-label-md text-on-surface-variant" href="#blog">Blog</a>
+<a class="px-2 py-1 hover:bg-surface-container-high font-label-md text-on-surface-variant" href="#contact">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-2">
+<div class="win95-inset px-2 py-0.5 font-label-sm text-[11px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span>
+<span class="" id="system-clock">01:57 PM</span>
+</div>
+</div>
+</header>
+<main class="pt-20 px-4 md:px-gutter max-w-container-max mx-auto space-y-16 pb-32" style="min-height: 100vh;">
+<!-- Hero Window -->
+<section class="win95-raised bg-surface overflow-hidden" id="hero">
+<div class="window-header h-8 flex items-center justify-between px-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-white text-[18px]">person</span>
+<span class="text-white font-label-sm uppercase tracking-wider">System_Identity.exe</span>
+</div>
+<div class="flex gap-1">
+<button class="win95-raised bg-surface-container w-5 h-5 flex items-center justify-center text-[12px] font-bold">_</button>
+<button class="win95-raised bg-surface-container w-5 h-5 flex items-center justify-center text-[12px] font-bold">□</button>
+<button class="win95-raised bg-surface-container w-5 h-5 flex items-center justify-center text-[12px] font-bold">X</button>
+</div>
+</div>
+<div class="p-8 flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1 space-y-6">
+<div class="inline-block bg-primary text-on-primary px-3 py-1 font-label-sm uppercase tracking-widest">Product Manager</div>
+<h1 class="font-headline-lg text-headline-lg leading-tight">
+                        Hi, I'm <span class="italic text-primary-container">Mian</span>.
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        Product Manager at <a class="text-primary font-bold underline decoration-2 underline-offset-4" href="#">UpCloud</a>, a Finnish Cloud Company.
+                    </p>
+<div class="win95-inset p-4 bg-surface-container-low border-l-4 border-primary">
+<p class="font-label-md leading-relaxed">
+                            I'm passionate about solving real problems for real people, with a special focus on user experience. Having over 8 years in tech across various roles, I've helped achieve great outcomes for a wide range of customers and businesses.
+                        </p>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-2 bg-primary-container opacity-10 blur-xl group-hover:opacity-20 transition-opacity"></div>
+<div class="win95-raised p-1 bg-surface">
+<img alt="Portrait of Mian Ahmad" class="w-64 h-80 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy-3hB1ON8E-jx1Wdbia1kzS0a3OqgmcbqDhTts9KCxvtaKyUj0fpoTyu6yr75rpNwBfVTTNU8Z-AV_UmAmsvnNgZ6xa7ywO2sDybT-w0BXi0aBdL-5KST6JdcHX9pFj4trCbFFUB1HufD2-z7BEcwOM3pYx0CuLzA40PmfeVQLb-_7ihRFvPOfXC3_iuVn1JiSiXjCdsHkcek41-bxHG7DZ1tDsP-I0Juyj0ZDocyUWO3ckFSKvRvPCCNai-_QkG1cMNl6iEN-S8">
+</div>
+</div>
+</div>
+</section>
+<!-- Work Grid (Bento Style in Windows) -->
+<section class="space-y-6" id="work">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md uppercase tracking-tighter bg-on-surface text-surface px-4">Selected Work</h2>
+<div class="flex-1 h-0.5 bg-on-surface"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Main Feature: UpCloud Demo -->
+<div class="md:col-span-8 win95-raised bg-surface flex flex-col">
+<div class="window-header h-7 flex items-center justify-between px-2">
+<span class="text-white font-label-sm">Project: UpCloud_Demo.exe</span>
+<span class="material-symbols-outlined text-white text-[16px]">visibility</span>
+</div>
+<div class="p-1 bg-black aspect-video overflow-hidden">
+<img class="w-full h-full object-cover hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd5Q68HLRToupfABCBoUXa5uZGxzWiie8oDWK5LY4wMSIOHXtSOSHQqE489GTnhAAbFyH9J5Ijn-ZN__pdWenfew21Xv1rzcThSI2ycIN9GIOU4eB7T5I1245bjQSn_Db6XaWvCUd9q61tTMZKp4uURVCjwm-E6HOzvDFsrmXWAgrMikjvyzYTg0yE81zZrbjTU0mufzx62eySDOrRx8rLeGi7vNSX4q4PumtGd-PTd2den1Bf8XNIRbdfous0DOq_2Jxqz6BtnFs">
+</div>
+<div class="p-6 space-y-4">
+<h3 class="font-headline-sm text-headline-sm">UpCloud Demo</h3>
+<p class="font-body-md text-on-surface-variant">Building a fastest path to a user's "aha" moment by removing signup friction and focusing on radical simplification.</p>
+<div class="flex gap-2">
+<span class="win95-inset bg-secondary-container text-on-secondary-container px-2 py-0.5 text-[10px] font-bold uppercase">Growth</span>
+<span class="win95-inset bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 text-[10px] font-bold uppercase">SaaS</span>
+</div>
+<a href="case_study_demo.html" style="text-decoration: none; display: inline-block;">
+    <button class="win95-button win95-raised px-6 py-2 bg-surface-container-high font-bold text-primary flex items-center gap-2 w-fit">
+        VIEW_CASE_STUDY.DLL <span class="material-symbols-outlined text-[18px]">arrow_right_alt</span>
+    </button>
+</a>
+</div>
+</div>
+<!-- Side Feature: Cost Calculator -->
+<div class="md:col-span-4 win95-raised bg-surface flex flex-col">
+<div class="window-header h-7 flex items-center justify-between px-2">
+<span class="text-white font-label-sm">Pricing_Calculator.exe</span>
+</div>
+<div class="p-6 flex flex-col justify-between h-full py-12">
+<div class="space-y-4">
+<div class="win95-inset p-4 bg-primary text-white font-label-md text-right text-xl">
+                                $124.50
+                            </div>
+<h3 class="font-headline-sm text-[20px]">Pricing Calculator</h3>
+<p class="font-label-md text-on-surface-variant">Transforming usage-based pricing from a static table into a trust-building interactive modeling engine with our Pricing Calculator.</p>
+</div>
+<a href="case_study_calculator.html" style="text-decoration: none; display: inline-block;">
+    <button class="win95-button win95-raised px-6 py-2 bg-surface-container-high font-bold text-primary flex items-center gap-2 w-fit">
+        VIEW_CASE_STUDY.DLL <span class="material-symbols-outlined text-[18px]">arrow_right_alt</span>
+    </button>
+</a>
+</div>
+</div>
+<!-- Wide Feature: Cloud Management Console -->
+<div class="md:col-span-12 win95-raised bg-surface flex flex-col md:flex-row overflow-hidden">
+<div class="md:w-1/3 bg-surface-variant p-8 border-r-2 border-on-surface">
+<div class="window-header h-6 mb-4 px-2 flex items-center">
+<span class="text-white font-label-sm text-[10px]">INFO_PANE</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4">Cloud Management Console</h3>
+<p class="font-body-md mb-6">Reducing cognitive load in complex infrastructure management through research-driven intuition and streamlined billing flows.</p>
+<ul class="space-y-2 font-label-md">
+<li class="flex items-center gap-2"><span class="text-secondary-fixed-dim">●</span> Streamlined Onboarding</li>
+<li class="flex items-center gap-2"><span class="text-secondary-fixed-dim">●</span> Transparent Billing</li>
+<li class="flex items-center gap-2"><span class="text-secondary-fixed-dim">●</span> Proactive Guidance</li>
+</ul>
+<a href="case_study_console.html" style="text-decoration: none; display: inline-block;">
+    <button class="win95-button win95-raised px-6 py-2 bg-surface-container-high font-bold text-primary flex items-center gap-2 w-fit">
+        VIEW_CASE_STUDY.DLL <span class="material-symbols-outlined text-[18px]">arrow_right_alt</span>
+    </button>
+</a>
+</div>
+<div class="flex-1 p-1 bg-black aspect-video overflow-hidden">
+<img alt="Cloud Management Console dashboard on retro hardware" class="w-full h-full object-cover hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz4lTIZHthEPDZUtNcxtETqO_zO_1n8SufB8bkDYzzF7KUro_bYSwxC6sXFgARipXIF7xh_OQ-d8sgTr39y5tYxsGHUt_CARaYlW-ahffZ6ZmNYWXSLjlVhTUjc7if9mBbm6YcIrRT5tIzlSqggSPmgAdqFth_EzG_pv2-70otUNGB1B2UHAD1s9ptXg9T2PqIOCKI4VZeJvM3H1Zx38JHIecqnovux_QlDtSJW1E6D-pOwXdUDWn56v3iM_tfMjrJTUKqoCVDvhg">
+</div>
+</div>
+</div>
+</section>
+<!-- Journey Section (System Log Style) -->
+<section class="space-y-6" id="journey">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md uppercase tracking-tighter bg-on-surface text-surface px-4">System Log: Career</h2>
+<div class="flex-1 h-0.5 bg-on-surface"></div>
+</div>
+<div class="win95-raised bg-black text-secondary-fixed-dim p-6 font-label-md space-y-4 overflow-x-auto">
+<div class="flex items-start gap-4">
+<span class="text-outline">2023.09.01</span>
+<span class="text-primary-fixed-dim">[INFO]</span>
+<p class="">MOUNTED: <span class="text-white font-bold">Product Manager, Customer Experience</span> at UpCloud (Helsinki, FI)</p>
+</div>
+<div class="flex items-start gap-4">
+<span class="text-outline">2022.01.15</span>
+<span class="text-primary-fixed-dim">[INFO]</span>
+<p class="">TRANSITION: <span class="text-white font-bold">Product Owner, Customer Experience</span> at UpCloud</p>
+</div>
+<div class="flex items-start gap-4">
+<span class="text-outline">2020.06.10</span>
+<span class="text-primary-fixed-dim">[INFO]</span>
+<p class="">JOINED: <span class="text-white font-bold">Customer Success Manager</span> at UpCloud</p>
+</div>
+<div class="flex items-start gap-4">
+<span class="text-outline">2019.03.22</span>
+<span class="text-primary-fixed-dim">[INFO]</span>
+<p class="">CONTRACT: <span class="text-white font-bold">Consultant</span> at Hitachi Vantara (via Accenture/N3) (London, UK)</p>
+</div>
+<div class="flex items-start gap-4">
+<span class="text-outline">2017.01.05</span>
+<span class="text-primary-fixed-dim">[INIT]</span>
+<p class="">BOOTSTRAP: <span class="text-white font-bold">Co-Founder &amp; Product Manager</span> at Speckly Oy</p>
+</div>
+<div class="pt-4 border-t border-secondary-fixed-dim/30 animate-pulse">
+<span class="">_</span>
+</div>
+</div>
+</section>
+<!-- Blog Section (Articles in Windows) -->
+<section class="space-y-8" id="blog">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md uppercase tracking-tighter bg-on-surface text-surface px-4">Storage: Articles</h2>
+<div class="flex-1 h-0.5 bg-on-surface"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Blog Post 1 -->
+<article class="win95-raised bg-surface flex flex-col group hover:-translate-y-1 transition-transform">
+<div class="window-header h-7 flex items-center justify-between px-2">
+<span class="text-white font-label-sm">Lessons_Learnt.txt</span>
+<div class="flex gap-1">
+<div class="w-3 h-3 bg-surface win95-inset"></div>
+</div>
+</div>
+<div class="p-1 bg-on-surface">
+<img class="w-full h-48 object-cover grayscale brightness-75 group-hover:brightness-100 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_EERnLg88w4zHjpUDvGhgYAAMYdd9eC_zUCQ6McUMl29xdQNb8ZlP0IA7gE-jB24vlGDi02c5CoBUYz7XYxC6az5zlZRuUrT10OrcISgZzGD39CV_vGnektXjSvGi-p8OHKONruH5TwpRWh9quTBmSRMp8kL8fHUqz8JFH6bt6zlDDfBW1nVJPB0733XlRDmDJkNkgTteFmCMZGU4ueVD0MKOyz3XNj50ccf1DvlFc-0CTjWaKR-bVw0v3TsY6stJhg3ETMa74xg">
+</div>
+<div class="p-6 space-y-4">
+<h3 class="font-headline-sm text-[22px] group-hover:text-primary transition-colors">Lessons learnt from own Start Up</h3>
+<p class="font-body-md text-on-surface-variant line-clamp-3">The Hard Trade-Offs I Faced While Building Spekly Oy. When I look back, what stands out most isn't the product, it's the conversations.</p>
+<a class="inline-flex items-center font-bold text-primary-container hover:underline gap-2" href="blog_speckly.html">
+    READ_FILE <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</a>
+</div>
+</article>
+<!-- Blog Post 2 -->
+<article class="win95-raised bg-surface flex flex-col group hover:-translate-y-1 transition-transform">
+<div class="window-header h-7 flex items-center justify-between px-2">
+<span class="text-white font-label-sm">UI_UX_Usability.doc</span>
+</div>
+<div class="p-1 bg-on-surface">
+<img class="w-full h-48 object-cover grayscale brightness-75 group-hover:brightness-100 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUQ8q1z6tU35W9cp3b5bnRKfgFm_4pKapSYOHIjXVO7mAJCM7vGX3xh315P4ze4W8i7EyORU0tHlayrgbEfYEuKyS-DHMQMaiW4eIUhAAGULLpsgMS2oe98fVjGZaBuofAl3_X-D9TAptN2Hw2yxQkwqNc4FigrVw7CuwnoWpAP52870DJYr5JaWtylo2_RBL33Ad7asgnu34MUTX2lY3O41tZ5mEGktScCeHl1LsZtqrBZDzjqYF00o7oAuvi4ymnOIipx08cqJk">
+</div>
+<div class="p-6 space-y-4">
+<h3 class="font-headline-sm text-[22px] group-hover:text-primary transition-colors">UI, UX &amp; Usability</h3>
+<p class="font-body-md text-on-surface-variant line-clamp-3">Why these three are not the same thing - and how product teams can stop confusing them. UI is what you see, UX is how things flow.</p>
+<a class="inline-flex items-center font-bold text-primary-container hover:underline gap-2" href="blog_ui_ux.html">
+    READ_FILE <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</a>
+</div>
+</article>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="win95-raised bg-primary-container text-white p-12 text-center space-y-8" id="contact">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg tracking-tight">Let's make something great together.</h2>
+<div class="flex flex-col md:flex-row justify-center gap-4">
+<a class="win95-button win95-raised bg-surface px-8 py-3 text-primary font-bold flex items-center justify-center gap-2" href="mailto:ma.mianahmad@gmail.com">
+<span class="material-symbols-outlined">mail</span> SEND_MAIL
+                </a>
+<a class="win95-button win95-raised bg-surface-container-highest px-8 py-3 text-on-surface font-bold flex items-center justify-center gap-2" href="https://www.linkedin.com/in/mian-ahmad">
+<span class="material-symbols-outlined">link </span> CONNECT_LINKEDIN
+              </a>
+</div>
+</section>
+</main>
+<!-- Taskbar Footer -->
+<footer class="fixed bottom-0 w-full z-50 h-10 bg-surface border-t-2 border-on-surface flex items-center px-4 justify-between shadow-[0px_-2px_0px_0px_rgba(0,0,0,0.1)]">
+<div class="flex items-center gap-2 h-full py-1">
+<button class="win95-raised win95-button bg-surface h-full px-4 flex items-center gap-2 font-bold text-[14px]" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">terminal</span>
+                Start
+            </button>
+<div class="w-0.5 h-full bg-outline-variant mx-1"></div>
+<div class="win95-inset flex items-center px-3 h-full font-label-sm text-[12px] bg-surface-container-low italic whitespace-nowrap">
+                © 1995 MIAN_AHMAD_CORP. All Rights Reserved.
+            </div>
+</div>
+<div class="hidden md:flex gap-4">
+</div>
+</footer>
+<script>
+        // System Clock Logic
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const clockEl = document.getElementById('system-clock');
+            if (clockEl) clockEl.textContent = timeString;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Simple Smooth Scroll for Anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+
+</body></html>
